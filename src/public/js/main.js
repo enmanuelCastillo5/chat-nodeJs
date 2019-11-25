@@ -39,7 +39,20 @@ $(function () {
         socket.emit('send message', $messageBox.val());
         $messageBox.val('');
     });
+
     socket.on('new message', function(data){
         $chat.append(data + '<br/>');
     });
+
+    socket.on('usernames', (data) => {
+        let html = '';
+        for (let i = 0; i < data.length; i++) {
+            html += `<p><li>${data[i]}</li></p>`
+            
+        }
+
+        $users.html(html)
+
+    })
+
 })
