@@ -22,10 +22,13 @@ module.exports = function(io) {
 
 
 
-    socket.on('send message', (data) => {
-        io.sockets.emit('new message', data);
-        });
+    socket.on('send message', data => {
+        io.sockets.emit('new message', {
+            msg: data,
+            nick: socket.nickname
 
+            });
+        });
 
 
     socket.on('disconnect', data => {
