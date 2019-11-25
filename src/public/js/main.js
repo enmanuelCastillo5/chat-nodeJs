@@ -41,11 +41,8 @@ $(function () {
     });
 
     socket.on('new message', function(data){
-<<<<<<< HEAD
         $chat.append(`<b> ${data.nick} </b>: ${data.msg} <br/>`);
-=======
-        $chat.append('<b>' + data.nick + '</b>: ' + data.msg + '<br/>');
->>>>>>> d5d2206593a7698e4159bcfe550edc15f8132539
+
     });
 
     socket.on('usernames', (data) => {
