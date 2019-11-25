@@ -62,4 +62,16 @@ $(function () {
         $chat.append(`<p class="whisper"><b>${data.nick}:</b>${data.msg}</p>`)
     })
 
+
+    socket.on('load old msgs', msgs => {
+        for (let i = 0; i < msgs.length; i++) {
+            displayMsg(msgs[i]);
+            
+        }
+    })
+
+    const displayMsg = (data) => {
+        $chat.append(`<p class="whisper"><b>${data.nick}:</b>${data.msg}</p>`)
+    
+    }
 })
