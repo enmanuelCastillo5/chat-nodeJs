@@ -22,17 +22,20 @@ module.exports = function(io) {
 
 
 
-    socket.on('send message', (data) => {
-        io.sockets.emit('new message', data);
-        });
+    socket.on('send message', data => {
+        io.sockets.emit('new message', {
+            msg: data,
+            nick: socket.nickname
 
+            });
+        });
 
 
     socket.on('disconnect', data => {
         if(!socket.nickname) return;
         nicknames.splice(nicknames.indexOf(socket.nickname), 1);
         updateNickname();   
-        console.log(`user disconnected ${socket.nickname}`)
+        console.log(`user disconnected: ${socket.nickname}`)
     });
     
 
